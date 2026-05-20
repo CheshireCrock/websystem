@@ -1,20 +1,25 @@
-import React from 'react'
-import Topbar from '../Component/Topbar'
-import Intro from '../Component/Intro'
-import Footer from '../../Footer'
-import ProgramList from '../Component/ProgramList'
-import TrainerSection from '../Component/Trainersection'
-const FitnessPage = () => {
+import Topbar from "../Component/Topbar";
+import Intro from "../Component/Intro";
+import ProgramList from "../Component/ProgramList";
+import Trainer from "../Component/Trainersection";
+import Bottom from "../Component/Footer";
+
+const FitnessPage = ({ onViewPrograms, onGoHome, myPrograms, setMyPrograms }) => {
   return (
-    <div> 
-        <Topbar/>  
-        <Intro/> 
-        <ProgramList/>
-        <TrainerSection/>
-        <Footer />
-        </div>
+    <>
+      <Topbar onGoHome={onGoHome} onViewPrograms={onViewPrograms} />
 
-) 
-}
+      <Intro
+        myPrograms={myPrograms}
+        setMyPrograms={setMyPrograms}
+        onViewPrograms={onViewPrograms}
+      />
 
-export default FitnessPage
+      <ProgramList />
+      <Trainer />
+      <Bottom />
+    </>
+  );
+};
+
+export default FitnessPage;

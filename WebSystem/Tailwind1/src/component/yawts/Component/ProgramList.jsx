@@ -2,45 +2,38 @@ import { programs } from "../data/data";
 
 const ProgramList = () => {
   return (
-    <div className="w-full bg-black text-white px-6 py-16">
-
-      {/* TITLE ON TOP */}
-      <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold">
-          Our Programs
-        </h1>
-
-        <p className="text-gray-400 mt-2">
+    <section id="programs" className="py-16 bg-[#030712] px-6">
+      {/* Header Section */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl text-white font-bold mb-2">Our Programs</h2>
+        <p className="text-gray-400 text-sm">
           Choose the workout style that matches your goals
         </p>
       </div>
 
-      {/* PROGRAM ROWS */}
-      <div className="flex flex-wrap justify-center gap-6">
-
+      {/* Grid Container */}
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl">
         {programs.map((program, index) => (
           <div
             key={index}
-            className="bg-gray-800 p-5 rounded-xl flex flex-col gap-3
-                       w-full sm:w-[48%] lg:w-[30%]"
+            className="bg-[#111827] rounded-2xl p-8 border border-gray-800 flex flex-col items-start text-left"
           >
-            {/* title */}
-            <h3 className="font-semibold text-lg text-white">
+            {/* Icon Container */}
+            <div className="text-4xl mb-6">
+              {program.icon}
+            </div>
+
+            {/* Content */}
+            <h3 className="font-bold text-xl text-white mb-3">
               {program.title}
             </h3>
-
-            {/* icon */}
-            <div className="text-2xl">{program.icon}</div>
-
-            {/* description */}
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm leading-relaxed">
               {program.description}
             </p>
           </div>
         ))}
-
       </div>
-    </div>
+    </section>
   );
 };
 
