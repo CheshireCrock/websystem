@@ -1,9 +1,9 @@
 import React from "react";
-import authContent from "../data/data";
-const AuthModal = ({ open, close, mode, switchMode }) => {
-  const authtext = authContent[mode];
+import { authContent } from "../data/data";
+const AutoModal = ({ open, close, mode, switchMode }) => {
+  const authtext = authContent[mode] || authContent.login;
   if (!open) {
-    return;
+    return null;
   }
   return (
     <div className="fixed top-0 right-0 left-0 z-50 flex justify-center items-center  px-4 py-8 bg-black/50  ">
@@ -54,4 +54,4 @@ const AuthModal = ({ open, close, mode, switchMode }) => {
   );
 };
 
-export default AuthModal;
+export default AutoModal;

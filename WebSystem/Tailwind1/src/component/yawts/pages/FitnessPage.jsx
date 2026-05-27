@@ -1,25 +1,60 @@
+import { useState } from "react";
 import Topbar from "../Component/Topbar";
 import Intro from "../Component/Intro";
 import ProgramList from "../Component/ProgramList";
-import Trainer from "../Component/Trainersection";
+import TrainerSection from "../Component/TrainerSection";
 import Bottom from "../Component/Footer";
+import TrainerProfile from "../Component/TrainerProfile";
+import PlansSection from "../Component/PlansSection";
 
-const FitnessPage = ({ onViewPrograms, onGoHome, myPrograms, setMyPrograms }) => {
+const Home = ({
+  onViewPrograms,
+  onGoHome,
+  myPrograms,
+  setMyPrograms,
+}) => {
+  const [showPlans, setShowPlans] = useState(false);
+  const [selectedTrainer, setSelectedTrainer] = useState(null);
+
+  // Trainer page (isolated view)
+  if (selectedTrainer) {
+    return (
+      <TrainerProfile
+        trainer={selectedTrainer}
+        onBack={() => setSelectedTrainer(null)}
+      />
+    );
+  }
+
+  // Plans page (isolated view)
+  if (showPlans) {
+    return (
+      <PlansSection onBack={() => setShowPlans(false)} />
+    );
+  }
+
   return (
     <>
-      <Topbar onGoHome={onGoHome} onViewPrograms={onViewPrograms} />
+      <Topbar
+        onGoHome={onGoHome}
+        onViewPrograms={onViewPrograms}
+      />
 
       <Intro
         myPrograms={myPrograms}
         setMyPrograms={setMyPrograms}
-        onViewPrograms={onViewPrograms}
+        onViewPlans={() => setShowPlans(true)}
       />
 
       <ProgramList />
-      <Trainer />
+
+      <TrainerSection
+        onSelectTrainer={setSelectedTrainer}
+      />
+
       <Bottom />
     </>
   );
 };
 
-export default FitnessPage;
+export default Home;

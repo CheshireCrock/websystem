@@ -3,13 +3,18 @@ import { HiMenu, HiX } from "react-icons/hi";
 import AuthModal from "./AuthModal";
 import { menuLinks } from "../data/data";
 
-const Topbar = ({ onGoHome, onViewPrograms }) => {
+const Topbar = ({
+  onGoHome,
+  onViewPrograms,
+}) => {
   const [open, setOpen] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [openAuth, setOpenAuth] = useState(false);
 
   const toggleMode = () => {
-    setAuthMode((prev) => (prev === "login" ? "signup" : "login"));
+    setAuthMode((prev) =>
+      prev === "login" ? "signup" : "login"
+    );
   };
 
   return (
@@ -22,7 +27,8 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
             className="text-2xl font-bold text-white cursor-pointer"
             onClick={onGoHome}
           >
-            Fitzone<span className="text-lime-500">.</span>
+            Fitzone
+            <span className="text-lime-500">.</span>
           </div>
 
           {/* DESKTOP LINKS */}
@@ -42,10 +48,11 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
           <div className="flex items-center gap-4">
 
             {/* Desktop Auth Buttons */}
-            <div className="hidden md:flex gap-4">
+            <div className="hidden md:flex items-center gap-3">
+
               <button
                 onClick={onViewPrograms}
-                className="bg-transparent border border-gray-700 rounded-xl hover:border-gray-500 transition-colors px-8 py-3 text-sm font-bold text-white"
+                className="h-11 px-6 flex items-center justify-center bg-transparent border border-gray-800 rounded-xl hover:border-gray-600 transition-colors text-sm font-bold text-white whitespace-nowrap"
               >
                 My Programs
               </button>
@@ -55,7 +62,7 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
                   setAuthMode("signup");
                   setOpenAuth(true);
                 }}
-                className="bg-lime-500 hover:bg-lime-600 transition-all rounded-full px-6 py-2 text-sm font-bold text-black"
+                className="h-11 px-6 flex items-center justify-center bg-[#A3E635] hover:bg-[#bbf746] transition-all rounded-full text-sm font-bold text-black whitespace-nowrap"
               >
                 Join Now
               </button>
@@ -65,10 +72,11 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
                   setAuthMode("login");
                   setOpenAuth(true);
                 }}
-                className="bg-gray-800 px-6 py-2 rounded-full text-sm font-bold text-white hover:bg-gray-700"
+                className="h-11 px-6 flex items-center justify-center bg-[#1F2937] hover:bg-gray-700 transition-colors rounded-full text-sm font-bold text-white whitespace-nowrap"
               >
                 Login
               </button>
+
             </div>
 
             {/* MOBILE MENU BUTTON */}
@@ -79,6 +87,7 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
             >
               {open ? <HiX /> : <HiMenu />}
             </button>
+
           </div>
         </div>
 
@@ -101,12 +110,13 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
 
             {/* Mobile Auth Buttons */}
             <div className="flex flex-col gap-3 mt-4">
+
               <button
                 onClick={() => {
                   onViewPrograms();
                   setOpen(false);
                 }}
-                className="bg-transparent border border-gray-700 rounded-xl hover:border-gray-500 transition-colors px-8 py-3 text-sm font-bold text-white"
+                className="h-12 w-full flex items-center justify-center bg-transparent border border-gray-700 rounded-xl text-sm font-bold text-white"
               >
                 My Programs
               </button>
@@ -117,7 +127,7 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
                   setAuthMode("signup");
                   setOpenAuth(true);
                 }}
-                className="bg-lime-500 w-full py-4 rounded-xl font-bold text-black shadow-lg shadow-lime-500/10"
+                className="h-12 w-full flex items-center justify-center bg-[#A3E635] rounded-xl font-bold text-black shadow-lg shadow-lime-500/10 text-sm"
               >
                 Join Now
               </button>
@@ -128,10 +138,11 @@ const Topbar = ({ onGoHome, onViewPrograms }) => {
                   setAuthMode("login");
                   setOpenAuth(true);
                 }}
-                className="bg-gray-800 w-full py-4 rounded-xl font-bold text-white hover:bg-gray-700 transition-colors"
+                className="h-12 w-full flex items-center justify-center bg-gray-800 rounded-xl font-bold text-white hover:bg-gray-700 transition-colors text-sm"
               >
                 Login
               </button>
+
             </div>
           </div>
         )}
